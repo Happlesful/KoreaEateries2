@@ -79,7 +79,7 @@ const Home = () => {
         </section>
         <section className="flex flex-col pt-14" id="home-others">
           <span className="flex justify-center my-2 -translate-x-24">
-            Checkout other dishes here
+            Check out other dishes here
           </span>
           <span className="flex flex-col justify-center items-center">
             <span className="flex flex-row">
