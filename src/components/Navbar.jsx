@@ -4,14 +4,14 @@ import { AddMenu, FavRestaurants, Login, Menu, Restaurants } from "../pages";
 import { AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
-  const { activeSidebar, setActiveSidebar, isClicked, setIsClicked } =
+  const { activeSidebar, setActiveSidebar, handleClick } =
     useContext(SharedStateContext);
   return (
     <>
       <div
         className="w-screen h-28
         flex flex-col justify-center items-center
-        bg-blue-200"
+        bg-blue-200 -z-50"
       >
         <div className="flex flex-row justify-center items-center">
           <span>
@@ -19,14 +19,13 @@ const Navbar = () => {
               className="relative end-4 scale-150 cursor-pointer"
               onClick={() => {
                 setActiveSidebar(!activeSidebar);
-                console.log(activeSidebar);
               }}
             />
           </span>
           <span
             className="w-16 h-16 mt-1 mb-5 cursor-pointer"
             onClick={() => {
-              setIsClicked("home");
+              handleClick("home");
             }}
           >
             <img src="./hanokIcon.png" alt="website logo" />
@@ -36,7 +35,6 @@ const Navbar = () => {
               className="relative start-4 scale-150 cursor-pointer"
               onClick={() => {
                 setActiveSidebar(!activeSidebar);
-                console.log(activeSidebar);
               }}
             />
           </span>
