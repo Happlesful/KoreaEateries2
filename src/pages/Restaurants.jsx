@@ -20,10 +20,10 @@ const Restaurants = (props) => {
 
   return (
     <>
-      <div className="flex flex-col px-10 my-4">
-        <section className="justify-center items-center pt-20">
+      <div className="flex flex-col px-10 my-1">
+        <section className="justify-center items-center pt-5">
           <span
-            className="flex justify-center my-2 -translate-x-36"
+            className="flex justify-center my-1 -translate-x-36"
             id="display-restaurant"
           >
             Restaurants
