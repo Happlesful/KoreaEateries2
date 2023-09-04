@@ -1,7 +1,7 @@
 import "./App.css";
 import { SharedStateProvider } from "./SharedStateContext";
-import { Navbar, Sidebar } from "./components";
-import { Home } from "./pages";
+import { Navbar, Sidebar, Body } from "./components";
+import { Home, Restaurants } from "./pages";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <SharedStateProvider>
         <Navbar />
         <Sidebar />
-        <Home />
+        <Body />
       </SharedStateProvider>
     </>
   );
