@@ -26,6 +26,7 @@ const Navbar = () => {
             className="w-16 h-16 mt-1 mb-5 cursor-pointer"
             onClick={() => {
               handleClick("home");
+              setActiveSidebar(false);
             }}
           >
             <img src="./hanokIcon.png" alt="website logo" />
