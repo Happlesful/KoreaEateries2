@@ -23,6 +23,14 @@ const Sidebar = () => {
     else setLocation("");
   };
 
+  const translateLocation = (location) => {
+    if (location === "서울") return "Seoul";
+    else if (location === "부산") return "Busan";
+    else if (location === "대구") return "Daegu";
+    else if (location === "광주") return "Gwangju";
+    else return "";
+  };
+
   const menuSetter = (menu) => {
     if (menu === "Korean") setMenu("한식");
     else if (menu === "Japanese") setMenu("일식");
@@ -34,6 +42,19 @@ const Sidebar = () => {
     else if (menu === "Chicken") setMenu("치킨");
     else if (menu === "BBQ") setMenu("바베큐");
     else setMenu("");
+  };
+
+  const translateMenu = (menu) => {
+    if (menu === "한식") return "Korean";
+    else if (menu === "일식") return "Japanese";
+    else if (menu === "중식") return "Chinese";
+    else if (menu === "양식") return "Western";
+    else if (menu === "디저트") return "Cafe/Dessert";
+    else if (menu === "분식") return "Snacks";
+    else if (menu === "베이커리") return "Bakery";
+    else if (menu === "치킨") return "Chicken";
+    else if (menu === "바베큐") return "BBQ";
+    else return "";
   };
 
   const locations = ["Seoul", "Busan", "Daegu", "Gwangju"];
@@ -84,16 +105,18 @@ const Sidebar = () => {
                 Location
               </span>
             </span>
-            {locations.map((location) => {
+            {locations.map((loc) => {
               return (
                 <span
-                  className="flex flex-row cursor-pointer hover:bg-indigo-100"
+                  className={`flex flex-row cursor-pointer hover:bg-indigo-100 ${
+                    translateLocation(location) === loc ? `bg-violet-100` : ``
+                  }`}
                   onClick={() => {
-                    locationSetter(location);
+                    locationSetter(loc);
                     handleClick("restaurants");
                   }}
                 >
-                  <p className="ml-10">{location}</p>
+                  <p className="ml-10">{loc}</p>
                 </span>
               );
             })}
@@ -105,16 +128,18 @@ const Sidebar = () => {
                 Menu
               </span>
             </span>
-            {menus.map((menu) => {
+            {menus.map((mapMenu) => {
               return (
                 <span
-                  className="flex flex-row cursor-pointer hover:bg-indigo-100"
+                  className={`flex flex-row cursor-pointer hover:bg-indigo-100 ${
+                    translateMenu(menu) === mapMenu ? `bg-violet-100` : ``
+                  }`}
                   onClick={() => {
-                    menuSetter(menu);
+                    menuSetter(mapMenu);
                     handleClick("restaurants");
                   }}
                 >
-                  <p className="ml-10">{menu}</p>
+                  <p className="ml-10">{mapMenu}</p>
                 </span>
               );
             })}
