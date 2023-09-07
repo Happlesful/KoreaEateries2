@@ -4,7 +4,7 @@ import { AddMenu, FavRestaurants, Login, Menu, Restaurants } from "../pages";
 import { AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
-  const { activeSidebar, setActiveSidebar, handleClick } =
+  const { activeSidebar, setActiveSidebar, handleClick, setMenu, setLocation } =
     useContext(SharedStateContext);
   return (
     <>
@@ -27,6 +27,8 @@ const Navbar = () => {
             onClick={() => {
               handleClick("home");
               setActiveSidebar(false);
+              setMenu("");
+              setLocation("");
             }}
           >
             <img src="./hanokIcon.png" alt="website logo" />
