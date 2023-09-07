@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { SharedStateContext, SharedStateProvider } from "../SharedStateContext";
 import matjib from "../MatJibData.json";
-import { Scrollcard } from "../components";
+import { Scrollcard, ScrollImage } from "../components";
 import { Restaurants } from "../pages";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BiRestaurant } from "react-icons/bi";
@@ -9,6 +9,8 @@ import { AiOutlineHistory, AiOutlineLoading } from "react-icons/ai";
 
 const Home = () => {
   const { handleClick, setLocation, setMenu } = useContext(SharedStateContext);
+
+  const [featuredItems, setFeaturedItems] = useState([]);
 
   const todaysFeatured = () => {
     const restaurantsLength = matjib.restaurants.length;
@@ -24,6 +26,10 @@ const Home = () => {
     const featured = indexes.map((index) => matjib.restaurants[index]);
     return featured;
   };
+
+  useEffect(() => {
+    setFeaturedItems(todaysFeatured());
+  }, []);
 
   return (
     <>
@@ -48,7 +54,9 @@ const Home = () => {
             <span
               className="flex flex-row items-center justify-center mx-5 px-2 py-1
                      bg-violet-300 rounded-xl cursor-pointer hover:opacity-80"
-              onClick=""
+              onClick={() => {
+                handleClick("favourites");
+              }}
             >
               <MdFavoriteBorder className="mx-1 animate-pulse scale-125" />
               Favourites
@@ -56,7 +64,9 @@ const Home = () => {
             <span
               className="flex flex-row items-center justify-center mx-5 px-2 py-1
                      bg-violet-300 rounded-xl cursor-pointer hover:opacity-80"
-              onClick=""
+              onClick={() => {
+                handleClick("history");
+              }}
             >
               <AiOutlineHistory className="mx-1 animate-pulse scale-125" />
               History
@@ -68,25 +78,7 @@ const Home = () => {
             Today's featured
           </span>
           <span className="flex flex-row justify-center items-center">
-            <span className="flex flex-row justify-center items-center flex-wrap w-[32rem]">
-              {todaysFeatured().map((restaurant, index) => {
-                return (
-                  <span
-                    className="flex flex-col justify-center items-center
-                            px-5 py-2"
-                    key={index}
-                  >
-                    <img
-                      src={restaurant.Image}
-                      alt={<AiOutlineLoading className="animate-spin" />}
-                      className="h-40 w-40 cursor-pointer rounded-xl hover:opacity-80"
-                      onClick={() => window.open(restaurant.Website, "_blank")}
-                    />
-                    <p>{restaurant.Name}</p>
-                  </span>
-                );
-              })}
-            </span>
+            <ScrollImage featuredRestaurants={featuredItems} />
           </span>
         </section>
         <section className="flex flex-col pt-14" id="home-others">
