@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { SharedStateContext, SharedStateProvider } from "../SharedStateContext";
-import { Home, Restaurants } from "../pages";
+import { Home, Restaurants, Favourites, History } from "../pages";
 
 const Body = () => {
   const {
@@ -29,6 +29,8 @@ const Body = () => {
         {isClicked.restaurants && (
           <Restaurants location={location} menu={menu} />
         )}
+        {isClicked.favourites && <Favourites />}
+        {isClicked.history && <History />}
       </div>
     </>
   );

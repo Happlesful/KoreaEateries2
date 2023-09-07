@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-function ScrollCard({ featuredRestaurants }) {
+function ScrollCard(props) {
+  const { featuredRestaurants } = props;
+
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
   useEffect(() => {
@@ -23,7 +25,9 @@ function ScrollCard({ featuredRestaurants }) {
           window.open(featuredRestaurants[featuredIndex].Website, "_blank")
         }
       />
-      <p>{featuredRestaurants[featuredIndex].Name}</p>
+      <p className="flex flex-row flex-wrap items-center justify-center">
+        {featuredRestaurants[featuredIndex].Name}
+      </p>
     </div>
   );
 }
