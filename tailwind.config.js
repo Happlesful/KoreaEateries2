@@ -6,6 +6,10 @@ module.exports = {
       width: {
         128: "32rem",
       },
+      scale: {
+        25: "0.25",
+        40: "0.4",
+      },
     },
   },
   plugins: [],

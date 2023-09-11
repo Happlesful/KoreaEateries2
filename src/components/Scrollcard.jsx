@@ -14,7 +14,7 @@ function ScrollCard(props) {
 
     return () => clearInterval(interval);
   }, [featuredRestaurants]);
-
+  //insert the name of the food on top of the image (translucent label at the top on the image)
   return (
     <div className="flex flex-col justify-center items-center py-2 px-5">
       <img
