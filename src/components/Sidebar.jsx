@@ -1,8 +1,10 @@
 import React, { useEffect, useContext } from "react";
+import { motion, useTransform } from "framer-motion";
 import { SharedStateContext, SharedStateProvider } from "../SharedStateContext";
 import { IoMdClose } from "react-icons/io";
 import { BiMap, BiFoodMenu } from "react-icons/bi";
 import { BsDatabaseAdd } from "react-icons/bs";
+import { GitHub, Moon, Sun, HelpCircle } from "react-feather";
 
 const Sidebar = () => {
   const {
@@ -13,6 +15,8 @@ const Sidebar = () => {
     setLocation,
     menu,
     setMenu,
+    isDarkMode,
+    setIsDarkMode,
   } = useContext(SharedStateContext);
 
   const locationSetter = (location) => {
@@ -78,16 +82,10 @@ const Sidebar = () => {
         <div
           className="fixed top-0 left-0 h-screen w-48 m-0 bg-indigo-200 rounded-2xl
             z-50"
+          onMouseLeave={() => {
+            setActiveSidebar(false);
+          }}
         >
-          <div
-            className="flex flex-row justify-center items-center bg-violet-100 rounded-2xl
-            my-1 mx-1 mb-2 cursor-pointer hover:opacity-80"
-            onClick={() => setActiveSidebar(!activeSidebar)}
-          >
-            <IoMdClose />
-            Close
-            <IoMdClose />
-          </div>
           <div
             className="flex flex-row bg-blue-100 justify-center items-center
                 my-1 text-sm cursor-pointer hover:opacity-80"
@@ -96,7 +94,7 @@ const Sidebar = () => {
               setMenu("");
             }}
           >
-            clear all selection
+            clear selections
           </div>
           <div className="flex flex-col justify-center pb-5">
             <span className="bg-indigo-300">
@@ -155,6 +153,40 @@ const Sidebar = () => {
             </span>
             <span className="flex flex-row cursor-pointer hover:bg-indigo-100">
               <p className="ml-10">Favourites</p>
+            </span>
+          </div>
+          <div className="flex flex-col justify-center">
+            <span className="bg-indigo-300">
+              <span className="flex flex-row items-center ml-4">
+                <HelpCircle className="scale-75" />
+                Others
+              </span>
+            </span>
+            <span className="flex flex-row cursor-pointer hover:bg-indigo-100">
+              <span
+                className="flex flex-row items-center ml-4"
+                onClick={() => {
+                  window.open("https://github.com/Happlesful");
+                }}
+              >
+                <GitHub className="scale-75" />
+                Go to repository
+              </span>
+            </span>
+            <span className="flex flex-row cursor-pointer hover:bg-indigo-100">
+              <span
+                className="flex flex-row items-center ml-4"
+                onClick={() => {
+                  setIsDarkMode(!isDarkMode);
+                }}
+              >
+                {isDarkMode ? (
+                  <Moon className="scale-75" />
+                ) : (
+                  <Sun className="scale-75" />
+                )}
+                {isDarkMode ? <p>Set Dark Mode</p> : <p>Set Light Mode</p>}
+              </span>
             </span>
           </div>
         </div>
