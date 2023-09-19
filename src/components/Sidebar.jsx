@@ -17,6 +17,7 @@ const Sidebar = () => {
     setMenu,
     isDarkMode,
     setIsDarkMode,
+    setCurrentPage,
   } = useContext(SharedStateContext);
 
   const locationSetter = (location) => {
@@ -92,6 +93,7 @@ const Sidebar = () => {
             onClick={() => {
               setLocation("");
               setMenu("");
+              setCurrentPage(1);
             }}
           >
             clear selections
@@ -112,6 +114,7 @@ const Sidebar = () => {
                   onClick={() => {
                     locationSetter(loc);
                     handleClick("restaurants");
+                    setCurrentPage(1);
                   }}
                 >
                   <p className="ml-10">{loc}</p>
@@ -135,6 +138,7 @@ const Sidebar = () => {
                   onClick={() => {
                     menuSetter(mapMenu);
                     handleClick("restaurants");
+                    setCurrentPage(1);
                   }}
                 >
                   <p className="ml-10">{mapMenu}</p>
