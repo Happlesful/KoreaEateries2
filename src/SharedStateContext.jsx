@@ -15,6 +15,7 @@ const SharedStateProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [location, setLocation] = useState("");
   const [menu, setMenu] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleClick = (click) => {
     setIsClicked({ ...initialState, [click]: true });
@@ -32,6 +33,8 @@ const SharedStateProvider = ({ children }) => {
     setLocation,
     menu,
     setMenu,
+    currentPage,
+    setCurrentPage,
   };
 
   return (
