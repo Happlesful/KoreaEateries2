@@ -19,20 +19,31 @@ const dailyWeather = (location) => {
       return data[0].Key;
     })
     .then((locationKey) => {
-      fetch(
-        `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}}/?apikey=${apikey}`,
+      return fetch(
+        `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}/?apikey=${apikey}`,
         {
           method: "GET",
         }
       );
     })
-    .then((res) => {
-      console.log(res.Headline.Text);
-      console.log("Complete");
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
     })
     .catch((error) => {
-      console.log("Error: ", error);
+      console.error("An error occurred:", error);
     });
 };
 
-dailyWeather("seoul");
+(async () => {
+  try {
+    var forecast = await dailyWeather("seoul");
+    weatherDescription = forecast.Headline.Text;
+  } catch (error) {
+    // Handle errors here if needed
+  }
+})();
+
+var weatherDescription = "";
