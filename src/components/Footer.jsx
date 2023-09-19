@@ -13,7 +13,7 @@ const Footer = () => {
         </span>
         <span className="flex flex-row justify-center items-center">
           <Calendar className="mr-1 scale-90" />
-          Last updated: 11.09.23
+          Last updated: 11.19.23
         </span>
       </div>
     </div>
