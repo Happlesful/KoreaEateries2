@@ -6,3 +6,4 @@ export { default as Body } from "./Body";
 export { default as Footer } from "./Footer";
 export { default as Scroll } from "./Scroll";
 export { default as Progressionbar } from "./Progressionbar";
+export { default as Pagination } from "./Pagination";
