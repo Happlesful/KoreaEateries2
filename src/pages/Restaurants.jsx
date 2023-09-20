@@ -65,7 +65,7 @@ const Restaurants = (props) => {
                         <img
                           src={restaurant.Image}
                           alt={<AiOutlineLoading className="animate-spin" />}
-                          className="h-40 w-40 cursor-pointer rounded-xl hover:opacity-80"
+                          className="h-40 w-40 cursor-pointer rounded-xl hover:opacity-90 hover:shadow-md"
                           onClick={() =>
                             window.open(restaurant.Website, "_blank")
                           }

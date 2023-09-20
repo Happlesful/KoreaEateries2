@@ -20,7 +20,8 @@ function ScrollCard(props) {
       <img
         src={featuredRestaurants[featuredIndex].Image}
         alt=""
-        className="h-40 w-40 cursor-pointer rounded-xl hover:opacity-80"
+        className="h-40 w-40 cursor-pointer rounded-xl 
+        hover:opacity-90 hover:shadow-md ease-out duration-100"
         onClick={() =>
           window.open(featuredRestaurants[featuredIndex].Website, "_blank")
         }
